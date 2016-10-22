@@ -1,9 +1,7 @@
 # Laravel Html table builder
 HTML table builder for laravel 5
 # Installation
-The preferred way to install extension is via composer. Check the composer.json for this extension's requirements and dependencies.
-
-To install, either run
+The preferred way to install extension is via composer. Check the composer.json for this extension's requirements and dependencies. To install, either run
 ```php
 $ php composer.phar require aayaresko/laravel-table
 ```
@@ -100,5 +98,4 @@ You can configure your own list of action buttons via <code>$action_buttons</cod
 You can specify any html options for any button via button <code>options</code> array.
 
 You can specify attributes values for the table itself, tr and td tags of the table via <code>$table_options</code>, <code>$row_options</code> and <code>$item_options</code> respectively.
-
 You can specify text, which will be displayed in case of no models via <code>$not_found_text</code>.
