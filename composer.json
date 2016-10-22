@@ -1,0 +1,23 @@
+{
+  "name": "aayaresko/laravel-table",
+  "description": "Simple HTML table builder for laravel 5",
+  "keywords": ["laravel", "table", "html-table", "html"],
+  "require": {
+    "php": ">=5.6.4",
+    "laravel/framework": "5.3.*",
+    "laravelcollective/html": "^5.3"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Andrey Yaresko",
+      "email": "aayaresko@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "autoload": {
+    "psr-4": {
+      "aayaresko\\table\\": "src/"
+    }
+  }
+}
