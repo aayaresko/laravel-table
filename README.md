@@ -1,6 +1,5 @@
 # Laravel Html table builder
 HTML table builder for laravel 5
-
 # Installation
 The preferred way to install extension is via composer. Check the composer.json for this extension's requirements and dependencies.
 
@@ -13,10 +12,8 @@ or add
 "aayaresko/laravel-table": "^1.0"
 ```
 to the require section of your composer.json.
-
 # Configuration
 It does not require any additional configuration.
-
 # Usage
 Simply create a new instance of <code>TablesFacade</code> and pass to it all required parameters:
 ```php
