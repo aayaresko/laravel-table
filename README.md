@@ -1,5 +1,5 @@
 # Laravel Html table builder
-Coming soon
+HTML table builder for laravel 5
 
 # Installation
 The preferred way to install extension is via composer. Check the composer.json for this extension's requirements and dependencies.
