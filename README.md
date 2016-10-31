@@ -76,6 +76,7 @@ $table = new TablesFacade(
 Function signature is pretty straightforward: <code>function ($model) {}</code>.
 
 <code>$default_actions_route</code> is route which will be used as 'parent' to generate links for all action buttons.
+You can set <$default_actions_route</code> to 'false'.
 
 You can configure your own list of action buttons via <code>$action_buttons</code> property.
 ```php
@@ -89,12 +90,14 @@ You can configure your own list of action buttons via <code>$action_buttons</cod
 ],
 'destroy' => [
     'title' => 'My button content',
-    'route' => 'site',
+    'url' => 'backend/accounts/destroy'
     'options' => [
         'class' => 'delete-ajax',
     ]
 ]
 ```
+Please be aware that <code>route</code> and <code>url</code> options are mutually exclusive.
+You can remove <code>$action_buttons</code> column by setting 'false' as <code>$action_buttons</code> value.
 You can specify any html options for any button via button <code>options</code> array.
 
 You can specify attributes values for the table itself, tr and td tags of the table via <code>$table_options</code>, <code>$row_options</code> and <code>$item_options</code> respectively.

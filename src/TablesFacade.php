@@ -56,9 +56,9 @@ class TablesFacade
      */
     public $item_options = [];
     /**
-     * @var string
+     * @var string|bool
      */
-    public $default_actions_route = '';
+    public $default_actions_route = false;
     /**
      * ```php
      *      'show' => [
@@ -132,9 +132,9 @@ class TablesFacade
      *
      * @param mixed $data_provider
      * @param array $attributes
-     * @param string $default_actions_route
+     * @param string|bool $default_actions_route
      */
-    public function __construct($data_provider, array $attributes, $default_actions_route)
+    public function __construct($data_provider, array $attributes, $default_actions_route = false)
     {
         $this->setDataProvider($data_provider);
         $this->attributes = $attributes;
@@ -295,18 +295,22 @@ class TablesFacade
     protected function buildActions($model)
     {
         $content = [];
-        foreach ($this->action_buttons as $action => $value) {
-            $collection = collect($value);
-            if ($collection->get('route')) {
-                $link = route($collection->get('route') . '.' . $action, $model->id);
-            } else if ($this->default_actions_route) {
-                $link = route($this->default_actions_route . '.' . $action, $model->id);
-            } else {
-                $link = "{$action}/{$model->id}";
+        if ($this->action_buttons) {
+            foreach ($this->action_buttons as $action => $value) {
+                $collection = collect($value);
+                if ($collection->get('route')) {
+                    $link = route($collection->get('route') . '.' . $action, $model->id);
+                } else if ($collection->get('url')) {
+                    $link = url($collection->get('url') . '/' . $model->id);
+                } else if ($this->default_actions_route) {
+                    $link = route($this->default_actions_route . '.' . $action, $model->id);
+                }
+                if (isset($link)) {
+                    $content[] = HtmlFacade::link($link, $collection->get('title'), $collection->get('options'), false, false);
+                }
             }
-            $content[] = HtmlFacade::link($link, $collection->get('title'), $collection->get('options'), false, false);
+            return HtmlFacade::tag('td', implode('', $content), $this->item_options);
         }
-        return HtmlFacade::tag('td', implode('', $content), $this->item_options);
     }
 
     /**
